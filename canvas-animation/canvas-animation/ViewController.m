@@ -175,27 +175,30 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             NSMutableArray* groups = [NSMutableArray array];
+
             for (StarView* view in self.stars) {
                 
                 CGRect viewCenter = CGRectMake(view.center.x+1, view.center.y+1, 1, 1);
                 CGRect coverRect = CGRectMake(viewCenter.origin.x-50, viewCenter.origin.y-50, 100, 100);
                 
-                BOOL containOther = NO;
+                //给每个元素建立一个关系组
                 NSMutableArray* group = [NSMutableArray array];
+                [group addObject:view];
+                
+                //为每个关系组添加关联的views
                 for (StarView* aroundView in self.stars) {
                     
-                    if (aroundView != view && CGRectContainsPoint(coverRect, aroundView.center)) {
-                        containOther = YES;
-                        
-                        [group addObject:view];
+                    //在指定范围内的元素且不是自己，而且也没有被对方关联过（避免重复连线）
+                    if (aroundView != view && CGRectContainsPoint(coverRect, aroundView.center) && ![aroundView.connectStars containsObject:view]) {
                         [group addObject:aroundView];
                     }
                 }
-                if (containOther) {
-                    [groups addObject:group];
-                }
+                
+                view.connectStars = group;
+                [groups addObject:group];
             }
             
+            //重绘，使每个关系组内元素两两连线
             self.bgView.groups = groups;
             [self.bgView setNeedsDisplay];
         });
@@ -205,7 +208,7 @@
 }
 
 
-//雪花效果
+//萤火虫效果
 -(void)snowflake{
         
     //设置layer的frame

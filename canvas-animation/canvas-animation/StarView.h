@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) UIAttachmentBehavior* attachBehavior;
 @property (nonatomic, weak) UIPushBehavior *pushBehavior;
 
+@property (nonatomic, strong) NSArray<StarView*> *connectStars;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -13,9 +13,13 @@
 -(void)drawRect:(CGRect)rect{
     
     for (NSArray* group in self.groups) {
-        
+        if (group.count < 2) {
+            continue;
+        }
         UIView* firstView = group.firstObject;
-        for (UIView* view in group) {
+        for (int i = 0; i < MIN(group.count,20); i ++) {
+            
+            UIView* view = group[i];
             
             UIBezierPath *path = [UIBezierPath bezierPath];
             
@@ -31,7 +35,7 @@
             UIColor *strokeColor = [UIColor whiteColor];
             [strokeColor set];
             
-            [path strokeWithBlendMode:kCGBlendModeHardLight alpha:0.1];
+            [path strokeWithBlendMode:kCGBlendModeHardLight alpha:0.15];
         }
     }
 }
