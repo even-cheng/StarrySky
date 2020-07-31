@@ -42,6 +42,9 @@
     emitterCell.scaleRange = 0.8;
     emitterCell.scaleSpeed = -0.15;
     
+    emitterCell.spin = 0.5;
+    emitterCell.spinRange = 0.5;
+    
     emitterCell.alphaRange = 0.75; // 0.25-1.0
     emitterCell.alphaSpeed = -0.15; //逐渐消逝
     
