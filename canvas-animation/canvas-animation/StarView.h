@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface StarView : UIImageView <UIDynamicItem>
+@interface StarView : UIView <UIDynamicItem>
 
 @property (nonatomic, weak) UIDynamicItemBehavior* dynamicBehavior;
 @property (nonatomic, weak) UICollisionBehavior* collisionBehavior;

@@ -9,15 +9,16 @@
 #import "ViewController.h"
 #import "StarView.h"
 #import "ContentView.h"
+#import "Snowflake.h"
 
 #define RandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1]
 
 @interface ViewController ()<UICollisionBehaviorDelegate>
 
 @property (nonatomic, weak) ContentView *bgView;
-@property(nonatomic,strong)UIDynamicAnimator * animator;
-@property(nonatomic,strong)NSMutableArray * stars;
-@property(nonatomic,strong)CAEmitterLayer * emitterLayer;
+@property (nonatomic,strong) UIDynamicAnimator * animator;
+@property (nonatomic,strong) NSMutableArray * stars;
+@property (nonatomic,strong) CAEmitterLayer * emitterLayer;
 
 @end
 
@@ -38,7 +39,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     //设置星空背景
-    UIImageView* bgImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg3"]];
+    UIImageView* bgImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg_image"]];
     bgImage.userInteractionEnabled = YES;
     bgImage.layer.frame = self.view.bounds;
     [self.view addSubview:bgImage];
@@ -51,7 +52,7 @@
     [self.view addSubview:bgView];
     
     //雪花效果
-    [self snowflake];
+    [self addSnowflake];
     
     //星空效果
     self.stars = [NSMutableArray array];
@@ -112,6 +113,7 @@
         
         CGPoint randomPoint = CGPointMake(arc4random_uniform(maxX), arc4random_uniform(maxY));
         StarView* starView = [[StarView alloc]initWithFrame:CGRectMake(0, 0, 6, 6)];
+
         starView.center = randomPoint;
         [self.stars addObject:starView];
         [self.bgView addSubview:starView];
@@ -208,47 +210,12 @@
 }
 
 
-//萤火虫效果
--(void)snowflake{
+//雪花效果
+-(void)addSnowflake{
         
-    //设置layer的frame
-    CAEmitterLayer *emitter = [CAEmitterLayer new];
-    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-50);
-    emitter.frame = frame;
-    [self.view.layer addSublayer:emitter];
-    
-    //发射体的形状通常会影响到新粒子的产生，但也会影响到它们的z位置，在你创造3d粒子系统的情况下。
-    emitter.emitterShape = kCAEmitterLayerRectangle;
-  
-    emitter.emitterPosition = CGPointMake(frame.size.width/2, frame.size.height/2);
-    emitter.emitterSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height-50);
-    
-    CAEmitterCell *emitterCell = [[CAEmitterCell alloc] init];
-    emitterCell.contents = (__bridge id)[UIImage imageNamed:@"snowflake1"].CGImage;
-    emitterCell.birthRate = 3;  //每秒创建20个雪花
-    emitterCell.lifetime = 12.0;  //在屏幕上保持3.5秒
-    emitterCell.lifetimeRange = 3.0; //2.5-5
-    //添加颗粒模板到发射器
-    emitter.emitterCells = @[emitterCell];
-    
-    emitterCell.yAcceleration = 0.001;
-    emitterCell.xAcceleration = 0.001;
-    emitterCell.velocity = 0.01;
-    emitterCell.emissionLongitude = (CGFloat)-M_PI;
-    emitterCell.velocityRange = 20.0; //带有负初始速度的粒子根本不会飞起来，而是浮起来
-    emitterCell.emissionRange = -(CGFloat)M_PI_2;
-    emitterCell.color = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0].CGColor;
-  
-    emitterCell.redRange = 0.5;
-    emitterCell.greenRange = 0.5;
-    emitterCell.blueRange = 0.5;
-    
-    emitterCell.scale = 0.8;
-    emitterCell.scaleRange = 0.8;
-    emitterCell.scaleSpeed = -0.15;
-    
-    emitterCell.alphaRange = 0.75; // 0.25-1.0
-    emitterCell.alphaSpeed = -0.15; //逐渐消逝
+    Snowflake* snow = [Snowflake new];
+    snow.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-50);
+    [self.view.layer addSublayer:snow];
 }
 
 //流星效果

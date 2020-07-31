@@ -17,6 +17,7 @@
 		1483FAE9229F728F002C00F0 /* canvas_animationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1483FAE8229F728F002C00F0 /* canvas_animationUITests.m */; };
 		1483FAFB229FAC6F002C00F0 /* StarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1483FAFA229FAC6F002C00F0 /* StarView.m */; };
 		1483FAFE229FE773002C00F0 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1483FAFD229FE773002C00F0 /* ContentView.m */; };
+		14A302D024D3C5CD00AE3DDA /* Snowflake.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A302CF24D3C5CD00AE3DDA /* Snowflake.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		1483FAFA229FAC6F002C00F0 /* StarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StarView.m; sourceTree = "<group>"; };
 		1483FAFC229FE773002C00F0 /* ContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
 		1483FAFD229FE773002C00F0 /* ContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
+		14A302CE24D3C5CD00AE3DDA /* Snowflake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Snowflake.h; sourceTree = "<group>"; };
+		14A302CF24D3C5CD00AE3DDA /* Snowflake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Snowflake.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				1483FAC5229F728E002C00F0 /* AppDelegate.m */,
 				1483FAC7229F728E002C00F0 /* ViewController.h */,
 				1483FAC8229F728E002C00F0 /* ViewController.m */,
+				14A302CE24D3C5CD00AE3DDA /* Snowflake.h */,
+				14A302CF24D3C5CD00AE3DDA /* Snowflake.m */,
 				1483FAFC229FE773002C00F0 /* ContentView.h */,
 				1483FAFD229FE773002C00F0 /* ContentView.m */,
 				1483FAF9229FAC6F002C00F0 /* StarView.h */,
@@ -205,7 +210,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = zhengcong;
+				ORGANIZATIONNAME = even_cheng;
 				TargetAttributes = {
 					1483FAC0229F728E002C00F0 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -275,6 +280,7 @@
 				1483FAC9229F728E002C00F0 /* ViewController.m in Sources */,
 				1483FAD4229F728F002C00F0 /* main.m in Sources */,
 				1483FAFE229FE773002C00F0 /* ContentView.m in Sources */,
+				14A302D024D3C5CD00AE3DDA /* Snowflake.m in Sources */,
 				1483FAFB229FAC6F002C00F0 /* StarView.m in Sources */,
 				1483FAC6229F728E002C00F0 /* AppDelegate.m in Sources */,
 			);
